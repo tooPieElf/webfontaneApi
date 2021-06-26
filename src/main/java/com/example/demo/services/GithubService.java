@@ -77,6 +77,5 @@ public class GithubService {
         String commitUrl = "https://api.github.com/repos/"+ base + "/" + repoName + "/commits?per_page=100";
         return restTemplate.getForObject( commitUrl, List.class);
     }
-
 }
 
