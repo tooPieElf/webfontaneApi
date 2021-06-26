@@ -2,6 +2,7 @@ package com.example.demo.services;
 
 import com.example.demo.models.GitHubUsers;
 
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -18,13 +19,11 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class GithubService {
 
-
    private final RestTemplate restTemplate;
 
-   private String userUrl = "https://api.github.com/search/repositories?q=";
-
     public GitHubUsers getRepositories(String repoName){
-        return restTemplate.getForObject(userUrl+repoName, GitHubUsers.class);
+        String userUrl = "https://api.github.com/search/repositories?q=";
+        return restTemplate.getForObject(userUrl +repoName, GitHubUsers.class);
     }
 
     public Set<String> getUniqueCommiters(String base, String repoName){
